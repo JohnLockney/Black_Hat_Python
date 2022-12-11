@@ -80,7 +80,7 @@ def proxy_handler(client_socket, remote_host, remote_port , receive_first):
         client_socket.send(remote_buffer)
 
     while True:
-        local_buffer = receive_first(client_socket)
+        local_buffer = receive_from(client_socket)
         if len(local_buffer):
             line = "[==>] Received %d bytes from localhost." % len(local_buffer)
             print(line)
