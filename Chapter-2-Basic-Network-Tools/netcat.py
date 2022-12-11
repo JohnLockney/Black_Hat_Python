@@ -2,6 +2,33 @@
 """
 Replacing Netcat (page 13)
 Note: sections in the book are presented out of order, needed to move "Class" first to work
+
+$ python netcat.py --help
+usage: netcat.py [-h] [-c] [-e EXECUTE] [-l] [-p PORT] [-t TARGET] [-u UPLOAD]
+
+BHP Net Tool
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -c, --command         initialize command shell
+  -e EXECUTE, --execute EXECUTE
+                        execute specified command
+  -l, --listen          listen
+  -p PORT, --port PORT  specified port
+  -t TARGET, --target TARGET
+                        specified IP
+  -u UPLOAD, --upload UPLOAD
+                        upload file
+
+Example:
+          netcat.py -t 192.168.1.108 -p 5555 -l -c # command shell
+          netcat.py -t 192.168.1.108 -p 5555 -l -u=mytest.txt # upload to file
+          netcat.py -t 192.168.1.108 -p 5555 -l -e="cat /etc/passwd" # execute command
+          echo 'ABCDEFGHI' | ./netcat.py -t 192.168.1.108 -p 135 # echo local text to server port 135
+          netcat.py -t 192.168.1.108 -p 5555 # connect to server
+
+
+
 """
 import argparse
 import socket
@@ -10,6 +37,16 @@ import subprocess
 import sys
 import textwrap
 import threading
+
+
+def execute(cmd):
+    cmd = cmd.strip()
+    if not cmd:
+        return
+    output = subprocess.check_output(shlex.split(cmd),
+                                     stderr=subprocess.STDOUT)
+    return output.decode
+
 
 class NetCat:
     def __init__(self, args, buffer=None):
@@ -50,13 +87,12 @@ class NetCat:
             sys.exit()
 
     def listen(self):
+        print('listening')
         self.socket.bind((self.args.target, self.args.port))
         self.socket.listen(5)
         while True:
            client_socket, _ = self.socket.accept()
-           client_thread = threading.Thread(
-              target=self.handle, args=(client_socket,)
-                )
+           client_thread = threading.Thread(target=self.handle, args=(client_socket,))
            client_thread.start()
 
     def handle(self, client_socket):
@@ -96,14 +132,6 @@ class NetCat:
 
 
 
-
-def execute(cmd):
-    cmd = cmd.strip()
-    if not cmd:
-        return
-    output = subprocess.check_output(shlex.split(cmd),
-                                     stderr=subprocess.STDOUT)
-    return output.decode
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
