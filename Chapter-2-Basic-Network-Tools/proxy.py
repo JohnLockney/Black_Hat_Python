@@ -1,7 +1,25 @@
 #!/usr/bin/env python
 """
+#########################################################################################
 Building a TCP Proxy (BHP page 19)
 
+#########################################################################################
+Test Notes:
+
+# First Window:
+$ sudo python proxy.py 127.0.0.1 21 ftp.sun.ac.za 21 True
+
+# Second window:
+ftp 127.0.0.1
+
+# First Window:
+[sudo] password for userID:
+[*] Listening on 127.0.0.1:21
+> Received incoming connection from 127.0.0.1:33496
+0000 32 32 30 20 57 65 6C 63 6F 6D 65 20 74 6F 20 66   220 Welcome to f
+0010 74 70 2E 73 75 6E 2E 61 63 2E 7A 61 0D 0A         tp.sun.ac.za..
+[<==] Sending 30 bytes to localhost.
+[*] No more data. CLosing connections.
 
 """
 
