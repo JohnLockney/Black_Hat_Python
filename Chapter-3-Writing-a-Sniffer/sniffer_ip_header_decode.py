@@ -12,6 +12,7 @@ import sys
 
 class IP:
     def __init__(self, buff=None):
+        header = struct.unpack('<BBHHHBBH4s4s', buff)
         self.ver = header[0] >> 4
         self.ihl = header[0] >> 0xF
 
@@ -44,9 +45,9 @@ def sniff(host):
     else:
         socket_protocol = socket.IPPROTO_ICMP
 
-    sniffer = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket_protocol)
-    sniffer.bind((host, 0))
-    sniffer.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL, 1)
+    sniffer = socket.socket (socket.AF_INET, socket.SOCK_RAW, socket_protocol)
+    sniffer.bind ((host, 0))
+    sniffer.setsockopt (socket.IPPROTO_IP, socket.IP_HDRINCL, 1)
 
     if os.name == 'nt':
         sniffer.ioctl(socket.SIO_RCVALL, socket.RCVALL_ON)
