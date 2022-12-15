@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 """
 BHP page 43
+
+Note: does not work on Windows
+OSError: [WinError 10013] An attempt was made to access a socket in a way forbidden by its access permissions
+
+On Linux  host:
 """
 
 import ipaddress
@@ -27,8 +32,8 @@ class IP:
         self.dst = header[9]
 
         # human readable IP addresses
-        self.src_address = ipaddress.ip_ipaddress(self.src)
-        self.dst_address = ipaddress.ip_ipaddress(self.dst)
+        self.src_address = ipaddress.ip_address(self.src)
+        self.dst_address = ipaddress.ip_address(self.dst)
 
         # map protocol constants to their names
         self.protocol.map = {1: "ICMP", 6: "TCP", 17: "UDP"}
