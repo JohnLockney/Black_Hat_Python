@@ -1,11 +1,21 @@
 #!/usr/bin/env python
 """
+##################################################################
+Chapter 3: Sniffer IP Header Decode
 BHP page 43
 
-Note: does not work on Windows
+##################################################################
+# Note: does not work on Windows
 OSError: [WinError 10013] An attempt was made to access a socket in a way forbidden by its access permissions
+Fix = run on a different port?
 
-On Linux  host:
+##################################################################
+# On Linux  host: (while pinging google in another window)
+Protocol: ICMP 142.251.111.102 -> 10.0.2.15f
+Protocol: ICMP 142.251.111.102 -> 10.0.2.15
+Protocol: ICMP 142.251.111.102 -> 10.0.2.15
+Protocol: ICMP 142.251.111.102 -> 10.0.2.15
+
 """
 
 import ipaddress
