@@ -64,7 +64,7 @@ def sniff(host):
             # create an IP header from the first 20 bytes
             ip_header = IP(raw_buffer[0:20])
             # print th edetected protocol and hosts
-            print('Protocol: %s %s -> %s' % (ip_header.protocol, ip_haeder.src_address, ip_header.dst_address))
+            print('Protocol: %s %s -> %s' % (ip_header.protocol, ip_header.src_address, ip_header.dst_address))
 
     except KeyboardInterrupt:
         # if we're on Windows, turn off promiscuous mode
