@@ -42,13 +42,12 @@ class IP:
 
 class ICMP:
     def __init__(selfself, buff):
-    header = struct.unpack('<BBHHHBBH4s4s', buff)
-    self.type = header[0]
-    self.code = header[1]
-    self.sum  = header[2]
-    self.id   = header[3]
-    self.seq  = header[4]
-
+        header = struct.unpack('<BBHHHBBH4s4s', buff)
+        self.type = header[0]
+        self.code = header[1]
+        self.sum  = header[2]
+        self.id   = header[3]
+        self.seq  = header[4]
 
 def sniff(host):
     # should look familiar form previous example
