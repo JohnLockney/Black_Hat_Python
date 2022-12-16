@@ -42,7 +42,7 @@ class IP:
 
 class ICMP:
     def __init__(self, buff):
-        header = struct.unpack('<BBHHHBBH4s4s', buff)
+        header = struct.unpack('<BBHHH', buff)
         self.type = header[0]
         self.code = header[1]
         self.sum  = header[2]
