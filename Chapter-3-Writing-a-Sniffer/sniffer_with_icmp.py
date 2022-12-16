@@ -41,7 +41,7 @@ class IP:
             self.protocol = str(self.protocol_num)
 
 class ICMP:
-    def __init__(selfself, buff):
+    def __init__(self, buff):
         header = struct.unpack('<BBHHHBBH4s4s', buff)
         self.type = header[0]
         self.code = header[1]
@@ -77,7 +77,7 @@ def sniff(host):
                 print(f'Header Length: {ip_header.ihl} TTL: {ip_header.ttl}')
 
                 # calculate where our ICMP packet starts
-                offset - ip_header.ihl * 4
+                offset = ip_header.ihl * 4
                 buf = raw_buffer[offset:offset +8]
                 # Create our ICMP structure
                 icmp_header = ICMP(buf)
