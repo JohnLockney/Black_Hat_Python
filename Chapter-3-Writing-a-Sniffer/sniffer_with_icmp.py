@@ -14,7 +14,7 @@ import sys
 
 class IP:
     def __init__(self, buff=None):
-        header = struct.unpack('<BBHHHBBH4s4s', buff)
+        header = struct.unpack('<BBHHH', buff)  # note different buffer size from previous example!!
         self.ver = header[0] >> 4
         self.ihl = header[0] & 0xF
 
@@ -81,7 +81,7 @@ def sniff(host):
                 buf = raw_buffer[offset:offset +8]
                 # Create our ICMP structure
                 icmp_header = ICMP(buf)
-                print('ICMP -> Type: %s Code: %s\n' % (icmp_header.tpe, icmp_header.code))
+                print('ICMP -> Type: %s Code: %s\n' % (icmp_header.type, icmp_header.code))
 
     except KeyboardInterrupt:
         # if we're on Windows, turn off promiscuous mode
