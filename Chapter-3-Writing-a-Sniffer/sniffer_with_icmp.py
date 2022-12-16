@@ -3,6 +3,20 @@
 ##################################################################
 Chapter 3: Sniffer IP Header Decode
 BHP page 46
+
+##################################################################
+# Test Notes: (while pinging google in different window)
+
+$ sudo python ./sniffer_with_icmp.py 10.0.0.1                                                                                                                                      126 ⨯
+Protocol ICMP 172.217.0.46 -> 10.0.0.1
+Version: 4
+Header Length: 5 TTL: 55
+ICMP -> Type: 0 Code: 0
+
+Protocol ICMP 172.217.0.46 -> 10.0.0.1
+Version: 4
+Header Length: 5 TTL: 55
+ICMP -> Type: 0 Code: 0
 """
 
 import ipaddress
