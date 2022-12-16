@@ -14,7 +14,7 @@ import sys
 
 class IP:
     def __init__(self, buff=None):
-        header = struct.unpack('<BBHHH', buff)  # note different buffer size from previous example!!
+        header = struct.unpack('<BBHHHBBH4s4s', buff)
         self.ver = header[0] >> 4
         self.ihl = header[0] & 0xF
 
