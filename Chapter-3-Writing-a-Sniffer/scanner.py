@@ -5,7 +5,21 @@ Chapter 3: Sniffer IP Header Decode
 BHP page 48
 
 TODO: fix local varible 'tgt' referenced beore assignment (line 103)
-Note: book differs from example/download code  
+Note: book differs from example/download code
+
+###########################################################
+# Note run with sudo to prevent permissions error:
+
+  self.socket = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket_protocol)
+  File "/usr/lib/python3.10/socket.py", line 232, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+PermissionError: [Errno 1] Operation not permitted
+
+###########################################################
+###########################################################
+Note: Change subnet (constant) before running!
+###########################################################
+###########################################################
 
 """
 
@@ -18,7 +32,7 @@ import threading
 import time
 
 # subnet to target
-SUBNET  = '192.168.1.0/24'
+SUBNET  = '192.168.0.0/24'
 MESSAGE = 'PYTHONROOLZ!'
 
 class IP:
