@@ -1,6 +1,15 @@
 #!/usr/bin/env python
 """
 Black hat Python: page 67
+
+#####################################################################
+# Install OpenCV libraries:
+apt-get install libopencv-dev python3-opencv python3-numpy python3-scipy
+
+#####################################################################
+# Get facial detection training files:
+wget http://eclecti.cc/files/2008/03/haarcascade_frontalface_alt.xml
+
 """
 
 import cv2
