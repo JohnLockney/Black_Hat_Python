@@ -76,10 +76,8 @@ class Recapper:
             if content and content_type:
                 fname = os.path.join(OUTDIR, f'ex_{i}.{content_type}')
                 print(f'Writing {fname}')
-                with open (fname, 'wb') as f:
+                with open(fname, 'wb') as f:
                     f.write(content)
-                    
-
 
 if __name__ == '__main__':
     pfile = os.path.join(PCAPS, 'pcap.pcap')
