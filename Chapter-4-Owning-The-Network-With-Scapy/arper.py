@@ -15,7 +15,7 @@ def get_mac(targeip):
     resp, _= srp(packet, timeout=2, retry=10, verbose=False)
     for _, r in resp:
         return r[Ether].src
-    return none
+    return None
 
 class Arper:
     def __init__(self, victim, gateway, interface='en0'):
