@@ -11,7 +11,7 @@ import urllib.parse
 import urllib.request
 
 url = 'http://boodelyboo.com'
-with urllib.requet.urlopen(url) as response: # GET request
+with urllib.request.urlopen(url) as response: # GET request
     content = response. read()
 
 print(content)
