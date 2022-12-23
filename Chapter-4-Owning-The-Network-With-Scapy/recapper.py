@@ -6,6 +6,22 @@ Page 64
 Note: PyCharm error on Windows: "cannot find reference 'TCP' in all.py"
 works OK on Linux
 
+#######################################################################################
+# Test Notes:
+
+1) Capture port 80 packtes to pcap:
+
+# tcpdump 'tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)' -w capture-http.pcap
+tcpdump: listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+^C143 packets captured
+143 packets received by filter
+0 packets dropped by kernel
+
+2) Look for http sites based on: https://trends.builtwith.com/websitelist/Port-80-Web-Design
+   Most examples are actually redirect to https!
+
+3) For this example, PCAP based on browsing to : http://www.abroadabroad.com/2017/02/20/tinder-travels/
+
 """
 
 from scapy.all import TCP, rdpcap
