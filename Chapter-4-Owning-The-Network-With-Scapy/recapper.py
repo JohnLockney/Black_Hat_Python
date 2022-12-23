@@ -52,7 +52,7 @@ class Recapper:
     def __init__(self, fname):
         pcap = rdpcap(fname)
         self.sessions = pcap.sessions()
-        self.response = list()
+        self.responses = list()
     def get_response(self):
         for session in self.sessions:
             payload = b''
@@ -68,7 +68,7 @@ class Recapper:
                 header = get_header(payload)
                 if header is None:
                     continue
-                self.responses.append(Response(header=header, payload=payload))
+                self.responses.append(Response(header=header, payload=payload)
 
     def write(self, content_name):
         for i, response in enumerate(self.responses):
