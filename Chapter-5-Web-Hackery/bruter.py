@@ -1,7 +1,33 @@
 #!/usr/bin/env python
 """
-Brute Forcing Directories adn File Locations
+Brute Forcing Directories and File Locations
 BHP: page 82
+
+#######################################################
+Note: wordlist recommended in the book is not found at
+wget https://www.netsparker.com/s/research/SVNDigger.zip
+site has been renamed: https://www.invicti.com/blog/web-security/svn-digger-better-lists-for-forced-browsing/
+but, file is not available
+
+For testing, modified to use dirbuster small list: = "/usr/share/wordlists/dirbuster/directory-list-2.3-small.txt"
+
+#######################################################
+# Test Results:
+
+Success (200: http://testphp.vulnweb.com/#.php
+Success (200: http://testphp.vulnweb.com/#.bak
+Success (200: http://testphp.vulnweb.com/#/
+Success (200: http://testphp.vulnweb.com/#.orig..
+Success (200: http://testphp.vulnweb.com/#.inc
+Success (200: http://testphp.vulnweb.com/#/
+Success (200: http://testphp.vulnweb.com/#.php
+Success (200: http://testphp.vulnweb.com/#.inc
+Success (200: http://testphp.vulnweb.com/index.php
+Success (200: http://testphp.vulnweb.com/#.bak.
+Success (200: http://testphp.vulnweb.com/#.orig
+Success (200: http://testphp.vulnweb.com/index.bak.....
+Success (200: http://testphp.vulnweb.com/images/
+
 """
 
 import queue
@@ -13,7 +39,8 @@ AGENT      = 'Mozilla/5.0 (X11; Linux x86_64; rv:19.0) Gecko/20100101 Firefox/19
 EXTENSIONS = ['.php', '.bak', '.orig', '.inc']
 TARGET     = "http://testphp.vulnweb.com"
 THREADS    = 50
-WORDLIST   = "/home/tim/Downloads/all.txt"
+#WORDLIST   = "./wordlist/wordlist.txt"
+WORDLIST   = "/usr/share/wordlists/dirbuster/directory-list-2.3-small.txt"
 
 def get_words(resume=None):
     ''' stub '''
@@ -67,4 +94,3 @@ if __name__ == '__main__':
     for _ in range(THREADS):
         t = threading.Thread(target=dir_bruter, args=(words,))
         t.start()
-
