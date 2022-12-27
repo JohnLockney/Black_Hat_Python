@@ -1,14 +1,36 @@
-#!/urs/bin/env python
+#!/usr/bin/env python
 """
 Extending Burp Proxy
 Page 97
 
-#########################################################################
-## Note: used Python2 for compatibility with Jython
+###############################################################
+# Note: download jython .jar from
+# https://www.jython.org/download.html
+
+###############################################################
+## jython import error: 12/27/22
+
+# jython-standalone-2.7.4.jar
+# burp community v2022.12.4
+# Wtarup warning: Your JRE appears to be 17.0.5 from Debian Burp has not ben fully tested on this platform
+## Import Error:
+java.lang.Exception: Extension class is not a recognized type
+	at burp.i6d.S(Unknown Source)
+	at burp.i6d.z(Unknown Source)
+	at burp.dp8.I(Unknown Source)
+	at burp.bsl.e(Unknown Source)
+	at burp.rm2.lambda$panelLoaded$0(Unknown Source)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
 """
 
+
 from burp import IBurpExtender
-from burp import IIntruderPaylaodGeneratorFactory
+from burp import IIntruderPayloadGeneratorFactory
 from burp import IIntruderPayloadGenerator
 
 from java.util import list, ArrayList
