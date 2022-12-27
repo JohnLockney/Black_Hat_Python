@@ -29,5 +29,5 @@ url = 'http://bing.com'
 r   = requests.get(url)
 
 tree= bs(r.text, 'html.parser')  # Parse into tree
-for link in tree.find.all('a'):  # Print all 'a' anchor elements
+for link in tree.find_all('a'):  # Print all 'a' anchor elements
     print(f"{link.get ('href')} --> {link.text}")
