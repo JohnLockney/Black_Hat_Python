@@ -22,7 +22,7 @@
 /maps?FORM=Z9LH2 -> Maps
 """
 
-from b64 import BeautifulSoup as bs
+from bs4 import BeautifulSoup as bs
 import requests
 
 url = 'http://bing.com'
