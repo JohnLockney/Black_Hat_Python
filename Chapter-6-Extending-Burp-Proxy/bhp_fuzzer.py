@@ -12,7 +12,7 @@ Page 97
 
 # jython-standalone-2.7.4.jar
 # burp community v2022.12.4
-# Wtarup warning: Your JRE appears to be 17.0.5 from Debian Burp has not ben fully tested on this platform
+# Startup warning: Your JRE appears to be 17.0.5 from Debian Burp has not ben fully tested on this platform
 ## Import Error:
 java.lang.Exception: Extension class is not a recognized type
 	at burp.i6d.S(Unknown Source)
