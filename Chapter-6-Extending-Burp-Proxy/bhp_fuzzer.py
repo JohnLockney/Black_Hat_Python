@@ -26,6 +26,12 @@ java.lang.Exception: Extension class is not a recognized type
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
 
+
+#################################################################
+# Note: Jython is currently compatible wtih Java 8 and 11
+#   https://www.jython.org/download.html
+# And not compatible with JDK 17.0.5 ??
+
 """
 
 
