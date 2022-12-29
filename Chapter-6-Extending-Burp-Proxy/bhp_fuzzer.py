@@ -2,6 +2,10 @@
 """
 Extending Burp Proxy
 Page 97
+###############################################################################################
+#### Test notes: this does not work due to jython incompatibility with java runtime, and burp
+###############################################################################################
+
 
 ###############################################################
 # Note: download jython .jar from
@@ -30,7 +34,18 @@ java.lang.Exception: Extension class is not a recognized type
 #################################################################
 # Note: Jython is currently compatible wtih Java 8 and 11
 #   https://www.jython.org/download.html
-# And not compatible with JDK 17.0.5 ??
+# And not compatible with JDK 17.0.5
+
+Note: this was not resolved by downgrading Java from v17 to 11 based on:
+https://goacademy.io/how-to-downgrade-java-on-ubuntu-kali-linux/c
+
+Error with Java 11:
+
+Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+Error: LinkageError occurred while loading main class burp.StartBurp
+        java.lang.UnsupportedClassVersionError: burp/StartBurp has been
+        compiled by a more recent version of the Java Runtime (class file version 61.0),
+        this version of the Java Runtime only recognizes class file versions up to 55.0
 
 """
 
