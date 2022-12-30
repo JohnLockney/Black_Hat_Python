@@ -23,5 +23,48 @@ def generate():
 
     with open('key.pub', 'wb') as f:
         f.write(public_key)
-        
+
+def get_rsa_cipher(keytype):
+    with open ('key.{keytype}') as f:
+        key = f.read()
+    rsakey = RSA.importKey()
+    return (PKCS1_OAEP.new(rsakey), rsakey.size_in_bytes())
+
+def encrypt(plaintext):
+    compressed_text = zlib.compress(plaintext)
+
+    session_key = get_random_bytes(16)
+    cipher_aes = AES.new(session_key, AES.MODE_EAX)
+    ciphertext, tag = cipher_aes.encrypt_and_digest(compressed_text)
+
+    get_rsa, _ = get_rsa_cipher('pub')
+    encrypted_session_key = get_rsa_cipher(session_key)
+
+    msg_payload = encrypted_session_key + cipher_aes.nonce + tag + ciphertext
+    encrypted = base64.encodedbytes(msg_payload)
+    return(encrypted)
+
+def decrypt(encrypted):
+    encrypted_bytes = BytesIO(base64.decodebytes((encrypted)))
+    cipher_rsa, keysize_in_bytes = get_rsa_cipher('pri')
+
+    encrypted_session_key = encrypted_bytes.read(keysize_in_bytes)
+    nonce = encrypted_bytes.read(16)
+    tag = encrypted_bytes.read(16)
+    ciphertext = encrypted_bytes.read()
+
+    session_key = cipher_rsa.decrypt(encrypted_session_key)
+    cipher_aes = AES.new(session_key, AES.MODE_EAX, nonce)
+    decrypted = cipher_aes.decrypt_and_verify(ciphertext, tag)
+
+    plaintext = zlib.decompress(decrypted)
+    return plaintext
+
+if __name__ == '__main__':
+    ''' generate() '''
+    plaintext = b'hey there you'
+    print(decrypt(encrypt(plaintext)))
+
+
+
 
