@@ -1,0 +1,14 @@
+CommandLine, Time, Executable, Parent PID< PID, User, Privileges
+\??\C:\WINDOWS\system32\conhost.exe 0x4, 20230107204942.793896-300, C:\WINDOWS\system32\conhost.exe,8304, 2196, ('DESKTOP-C6HCMKQ', 0, 'admin'), N/A
+"C:\WINDOWS\system32\cmd.exe" , 20230107204942.750124-300, C:\WINDOWS\system32\cmd.exe,13424, 8304, ('DESKTOP-C6HCMKQ', 0, 'admin'), N/A
+notepad, 20230107204959.745010-300, None,8304, 10624, ('DESKTOP-C6HCMKQ', 0, 'admin'), N/A
+C:\WINDOWS\system32\DllHost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5}, 20230107205000.417978-300, C:\WINDOWS\system32\DllHost.exe,1128, 3536, ('DESKTOP-C6HCMKQ', 0, 'admin'), N/A
+calc, 20230107205007.102067-300, C:\WINDOWS\system32\calc.exe,8304, 10072, ('DESKTOP-C6HCMKQ', 0, 'admin'), N/A
+C:\WINDOWS\system32\ApplicationFrameHost.exe -Embedding, 20230107205007.465516-300, C:\WINDOWS\system32\ApplicationFrameHost.exe,1128, 14284, ('DESKTOP-C6HCMKQ', 0, 'admin'), N/A
+None, 20230107205007.972866-300, None,496, 14356, (None, 2, None), N/A
+None, 20230107205007.502137-300, None,496, 4816, (None, 2, None), N/A
+"C:\Program Files\WindowsApps\Microsoft.WindowsCalculator_11.2210.0.0_x64__8wekyb3d8bbwe\CalculatorApp.exe" -ServerName:App.AppXjvs2nbwryyqjz1h8d8v70f70g3rgdcyb.mca, 20230107205007.484594-300, C:\Program Files\WindowsApps\Microsoft.WindowsCalculator_11.2210.0.0_x64__8wekyb3d8bbwe\CalculatorApp.exe,1128, 7848, ('DESKTOP-C6HCMKQ', 0, 'admin'), N/A
+None, 20230107205009.130377-300, None,964, 12016, (None, 2, None), N/A
+C:\Windows\System32\RuntimeBroker.exe -Embedding, 20230107205008.824646-300, C:\Windows\System32\RuntimeBroker.exe,1128, 5456, ('DESKTOP-C6HCMKQ', 0, 'admin'), N/A
+"C:\WINDOWS\System32\SearchProtocolHost.exe" Global\UsGthrFltPipeMssGthrPipe_S-1-5-21-3401075323-127085167-813094986-1001445_ Global\UsGthrCtrlFltPipeMssGthrPipe_S-1-5-21-3401075323-127085167-813094986-1001445 1 -2147483646 "Software\Microsoft\Windows Search" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT; MS Search 4.0 Robot)" "C:\ProgramData\Microsoft\Search\Data\Temp\usgthrsvc" "DownLevelDaemon"  "1", 20230107205022.827758-300, C:\WINDOWS\System32\SearchProtocolHost.exe,7996, 4244, ('DESKTOP-C6HCMKQ', 0, 'admin'), N/A
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --type=gpu-process --disable-gpu-sandbox --use-gl=disabled --gpu-vendor-id=4098 --gpu-device-id=5592 --gpu-sub-system-id=323948581 --gpu-revision=196 --gpu-driver-version=27.20.1028.1 --gpu-preferences=UAAAAAAAAADoAAAYAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAASAAAAAAAAAAYAAAAAgAAABAAAAAAAAAAGAAAAAAAAAAQAAAAAAAAAAAAAAAOAAAAEAAAAAAAAAABAAAADgAAAAgAAAAAAAAACAAAAAAAAAA= --mojo-platform-channel-handle=5144 --field-trial-handle=1968,i,10418535095953492402,567972838945189371,131072 /prefetch:2, 20230107205028.384629-300, C:\Program Files\Google\Chrome\Application\chrome.exe,14600, 12984, ('DESKTOP-C6HCMKQ', 0, 'admin'), N/A
