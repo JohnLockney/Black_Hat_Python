@@ -59,7 +59,7 @@ def monitor(path_to_watch):
         win32con.FILE_FLAG_BACKUP_SEMANTICS,
         None
     )
-    while True:
+               while True:
         try:
             results = win32file.ReadDirectoryChangesW(
                 h_directory,
